@@ -1,6 +1,8 @@
 const menuItems = document.querySelector('.menu-items')
+// const menuUrl = 'http://localhost:5501'
+const menuUrl = 'https://justin-test-menu.web.app/database.json'
 
-fetch('http://localhost:5501')
+fetch(menuUrl)
 .then(response => response.json())
 .then(menuItemsData => {
     let html = ''
@@ -8,14 +10,11 @@ fetch('http://localhost:5501')
         let htmlItem = `
         <div class="menu-items__item">
           <img src="${eachItem.image}"/>
-        <div>
             <h3>${eachItem.id} ${eachItem.title}</h3>
             <p>${eachItem.description}</p>
             <p>${eachItem.ingredients}</p>
         </div>
-        </div>
-      </div>
-    `
+      `
     html += htmlItem
     })
     menuItems.innerHTML = html
